@@ -2,12 +2,12 @@
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
     <ui-button @click="increment" >
-        увеличить
+      {{ $t("common.increase") }}
     </ui-button>
-    <div> result - {{ count }} </div>
+    <div>{{ $t('module.result', { count }) }}</div>
 
     <ui-switch v-model="isDark" @change="toggleDarkMode"/>
-    <div> isDark - {{ isDark }} </div>
+    <div>{{ $t('isDarkTheme', { isDark }) }}</div>
 
     <div>
       <ui-input
@@ -18,7 +18,7 @@
       <ui-button
         @click="log"
       >
-        Кнопка
+        {{ $t("common.button") }}
       </ui-button>
     </div>
 
@@ -26,9 +26,25 @@
       {{ text }}
     </div>
 
-    <router-link :to="`${$basePath}/`">Index</router-link>
+    <div>
+      <h1>{{ $t("common.hello") }}</h1>
+      <p>{{ $d(new Date()) }}</p>
+
+      <select v-model="$i18n.locale" @change="setLocale">
+        <option
+          v-for="locale in $i18n.availableLocales"
+          :key="`locale-${locale}`"
+          :value="locale"
+        >
+          {{ locale }}
+        </option>
+      </select>
+    </div>
+
+
+    <router-link :to="`${$basePath}/`">{{ $t("common.index") }}</router-link>
     <br>
-    <router-link :to="`${$basePath}/home`">Go to Home</router-link>
+    <router-link :to="`${$basePath}/home`">{{ $t("common.home") }}</router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -60,6 +76,9 @@ export default {
     const count = computed(() => store.count);
     const increment = () => store.increment();
     const log = () => console.log(text.value);
+    const setLocale = (event) => {
+      localStorage.setItem('locale', event.target.value);
+    };
 
     return {
       text,
@@ -67,6 +86,7 @@ export default {
       isDark,
       increment,
       log,
+      setLocale,
       toggleDarkMode,
     };
   },
