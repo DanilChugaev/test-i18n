@@ -1,0 +1,29 @@
+:root {
+    --color-bg-main: #fff;
+    --color-text: #1F2328;
+    --color-border: rgb(216, 222, 228);
+
+
+    --aside-background-color: #fff;
+    --header-background-color: #fff;
+    --main-background-color: #f7f9fb;
+
+    --border-color: #d0d7de;
+    --text-color: #213547;
+    --text-hover-color: #274056;
+}
+
+html.dark-mode {
+    --color-bg-main: #22272e;
+    --color-text: #adbac7;
+    --color-border: #373e47;
+
+
+    --aside-background-color: #fff;
+    --header-background-color: #fff;
+    --main-background-color: #5b5b5e;
+
+    --border-color: #d0d7de;
+    --text-color: #213547;
+    --text-hover-color: #274056;
+}
